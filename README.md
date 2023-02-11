@@ -1,9 +1,8 @@
 # Convex-Hull-Algorithm
 
 
-Please note that the midterm utilizes the C++ library type std::vector, a class template for resizable arrays. This type can be used to store the set Q of points, order points based on the minimum y-component and polar angle, and defines methods that allow us to use it like a stack. A stack can be viewed as an array (or vector) of elements that is changed at one end only.
-
-
+Please note that the project utilizes the C++ library type std::vector, a class template for resizable arrays. This type can be used to store the set Q of points, order points based on the minimum y-component and polar angle, and defines methods that allow us to use it like a stack. A stack can be viewed as an array (or vector) of elements that is changed at one end only.
+\
 ```
 **Test Driver** 
 
@@ -59,7 +58,8 @@ p10 - p12
 
 p12 - p00
 ```
-
+\
+\
 # Problem 1 
 
 Class Vector2D defines the infrastructure to represent quantities with magnitude and size: 
@@ -131,7 +131,7 @@ Vector2D**&** aObject );
 
 };
 ```
-
+\
 The methods of Vector2D define the standard features of 2D vectors. Objects of Vector2D can be null vectors, that is, [0,0]. The methods dot()  and angleBetween()  must properly handle null vectors. The dot product of two vectors is zero if the vectors are orthogonal.
 
 The input operator for Vector2D just has to read the x- and y-coordinates. 
@@ -139,7 +139,8 @@ The input operator for Vector2D just has to read the x- and y-coordinates.
 The output operator has to produce the usual vector notation. That is a Vector2D object with fX = 2 and fY = 3 has to send to the output steam a string "[2,3]". 
 
 There  is  no  test  driver  for Vector2D.  You  may  define  one  yourself  to  guarantee  the correctness of your implementation.
-
+\
+\
 ## Problem 2
 
 Points in 2D are represented by objects of type Point2D:
@@ -213,7 +214,7 @@ Point2D**&** aObject );
 
 };
 ```
-
+\
 Class Point2D encodes points in 2D. Objects of class Point2D have a name or id, a position in 2D space expressed as a 2D vector, and an origin that provides a coordinate reference. The latter can change depending on the way we look at 2D points. When we create points initially,
 
 the origin is set to (0,0), the origin of a  Cartesian coordinate system. To facilitate this approach,  the  application  has  to  define  a  constant  global  Point2D  object gCoordinateOrigin that represents the 2D point (0,0). Ideally, this constant global object should be defined in Point2D.cpp, like:
@@ -248,7 +249,7 @@ The output operator has to produce the usual point notation. That is a Point2D o
 - 2 and fY = 3 has produce the output “p00: (2,3)”. 
 
 There is no test driver for Point2D. You may define one yourself to guarantee the correctness of your implementation.
-
+\
 ## Problem 3
 
 We use class Point2DSet  to define a container for 2D points that can be used for storing, sorting, and systematic traversal of 2D points and the construction of the convex hull thereof.
@@ -298,7 +299,7 @@ We use class Point2DSet  to define a container for 2D points that can be used fo
 
 };
 ```
-
+\
 Class Point2DSet defines a container for 2D points. It uses std::vector for storage. The type std::vector  is a C++ standard class template and provides a sequence container representing  arrays  that  can  change  in  size.  We  instantiate std::vector with Point2D, which yields a vector of 2D points. We will manipulate this vector at one and only. That is, when we add an element, then the element is inserted at the end. If we need to remove an element, then that element should be the last element in the vector. Using vectors this way allows us to view vectors as stacks. The class template std::vector provides the necessary operations.
 
 Class Point2DSet does not require any user defined constructors. C++ synthesizes the required default constructor, which initializes the instance variable fPoints to  an  emptyvector of 2D points.
@@ -319,12 +320,12 @@ finishes, the reference argument aConvexHull contains the 2D points that constit
 The methods size() and clear() return the number of elements in the set and empty the set, respectively.
 
 The method sort() takes a comparator, a Boolean function with  two 2D  point arguments, and performs in-place sorting of the underlying set, that is, the vector  fPoints. The C++ template  class std::vector  does  not  directly  support  sorting.  You  need  to  use stable\_sort  defined  in algorithm.  The  procedure stable\_sort  requires  three parameters: an iterator positioned at the first element, an iterator to mark the end, and a binary function that returns true if its first argument is considered to go before the second. To complete Graham's scan, you need two comparators:
-
+\
 ```
 - **bool** orderByCoordinates( **const** Point2D**&** aLeft, **const** Point2D**&** aRight )
 - **bool** orderByPolarAngle( **const** Point2D**&** aLHS, **const** Point2D**&** aRHS )
 ```
-
+\
 Again, to guarantee numerical stability, deviations of less than 10-4 are considered equal.
 
 Finally, the indexer **operator[]**() and the iterator methods begin() and end() have the expected  semantics.  The  C++  template  class std::vector  defines  the  necessary abstractions to implement the behavior. (Actually, class  Point2DSet  defines an object adapter for std::vector to represent 2D points and the construct their respective convex hull.)
