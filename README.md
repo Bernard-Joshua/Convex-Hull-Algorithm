@@ -2,7 +2,7 @@
 
 
 Please note that the project utilizes the C++ library type std::vector, a class template for resizable arrays. This type can be used to store the set Q of points, order points based on the minimum y-component and polar angle, and defines methods that allow us to use it like a stack. A stack can be viewed as an array (or vector) of elements that is changed at one end only.
-\
+
 ```
 **Test Driver** 
 
